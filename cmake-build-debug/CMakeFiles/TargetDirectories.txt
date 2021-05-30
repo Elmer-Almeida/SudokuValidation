@@ -1,0 +1,3 @@
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/cmake-build-debug/CMakeFiles/ElmerAlmeidaAssign1.dir
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

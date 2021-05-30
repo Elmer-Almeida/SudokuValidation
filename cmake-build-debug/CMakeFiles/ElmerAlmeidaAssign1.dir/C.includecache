@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/almeielm.c
+almeielm.h
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/almeielm.h
+
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/almeielm.h
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/main.c
+almeielm.h
+C:/Users/James/CLionProjects/Assignment01_DataStructuresInC/ElmerAlmeidaAssign1/almeielm.h
+
