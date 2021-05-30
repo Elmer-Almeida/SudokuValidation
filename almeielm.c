@@ -1,6 +1,7 @@
 /*
  * @author Elmer Almeida
  * @date May 29 2021
+ * @revision 1
  *
  * almeielm.c provides all the functions required for main.c to operate.
  * The main purpose of this project is to validate a sudoku grid is valid or not.
@@ -18,6 +19,7 @@ void displayRowInputPrompt() {
     puts("and press 'RETURN' after entering 9 integers.");
     puts("Remember, to make a valid row of the Sudoku Grid,");
     puts("all integers should be distinct and range from 1-9.\n");
+    printf("Input:");
 }
 
 /*
@@ -30,7 +32,7 @@ void displayRowInputPrompt() {
 void fillBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
     int i, j;
     srand(time(NULL)); // Seed random number generator to force new random numbers
-    // loop through 2d array
+    // loop through 2d array board[rows][columns]
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
             board[i][j] = rand() % RANGE + OFFSET; // rand() % n + m | where n is range, m is offset
@@ -85,11 +87,15 @@ void checkBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
  *
  * Given a sudoku board, and its rows, and columns, print the board
  * and its contents to the screen.
+ *
+ * This method also calls checkBoard(board[][], int, int) to validate if the board is valid.
+ * The checkBoard(int [][], int, int) is called after printing out the sudoku grid to the screen.
  */
 void printBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
     int i, j;
     printf("Sudoku Grid\n");
     puts("---");
+    // loop through entire board board[rows][columns]
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
             printf("%d  ", board[i][j]);
@@ -97,6 +103,8 @@ void printBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
         puts("");
     }
     puts("---");
+
+    // Important: check if the board is valid
     checkBoard(board, rows, columns);
 }
 

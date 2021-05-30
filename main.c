@@ -1,6 +1,7 @@
 /*
 * @author Elmer Almeida
 * @date May 29 2021
+* @revision 1
 *
 * almeielm.c provides all the functions required for main.c to operate.
 * The main purpose of this project is to validate a sudoku grid is valid or not.
@@ -22,9 +23,8 @@ int main() {
     };
 
     /* Testing Sudoku Grid */
-    puts("Testing Sudoku Board\n");
+    puts("Testing the following Sudoku Board\n");
     printBoard(testBoard, SUDOKU_ROWS, SUDOKU_COLUMNS);
-    puts("");
     puts("==========================");
     puts("");
 
