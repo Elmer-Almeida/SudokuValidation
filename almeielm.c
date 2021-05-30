@@ -29,11 +29,11 @@ void displayRowInputPrompt() {
  */
 void fillBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
     int i, j;
-    // Seed random number generator to force new random numbers
-    srand(time(NULL));
+    srand(time(NULL)); // Seed random number generator to force new random numbers
+    // loop through 2d array
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
-            board[i][j] = rand() % RANGE + OFFSET; //    r = rand() % 10 + 5 | a random number from 5 - 14
+            board[i][j] = rand() % RANGE + OFFSET; // rand() % n + m | where n is range, m is offset
         }
     }
 }
@@ -53,9 +53,10 @@ void checkBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
 
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
+            // Divide sudoku grid into 3x3's
             if (i % 3 == 0 && j % 3 == 0) {
-                // game board is divided into 3x3 board
                 int x, y;
+                // check each grid for sum and duplicate values
                 for (x = 0; x < 3; x++) {
                     for (y = 0; y < 3; y++) {
                         for (int z = 1; z < 10; z++) {
@@ -64,9 +65,11 @@ void checkBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
                                 correctItem++;
                             }
                         }
+                        // count the number of grids valid in the entire sudoku grid
                         if (correctItem == 9 && rowColumnSum == 45) correctGrids++;
                     }
                 }
+                // reset the 3x3 grid value counter and 3x3 grid sum
                 correctItem = 0;
                 rowColumnSum = 0;
             }
@@ -125,9 +128,11 @@ int getInputFromUser(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int row) {
     } else {
         int i, j, counter = 0;
         for (i = 0; i < 9; i++) {
+            // check if values provided are < 1 or > 9
             if (userInput[i] < 1 || userInput[i] > 9) {
                 outsideRange = 1; // set flag of outsideRange to 1
             }
+            // Loop through 9 elements and check for duplicates
             for (j = 0; j < 9; j++) {
                 if (i != j && userInput[i] == userInput[j]) {
                     counter++; // count the number of hits that are duplicate

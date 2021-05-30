@@ -11,7 +11,10 @@
 #include "almeielm.h"
 
 int main() {
+    // Sudoku grid to interact with user
     int board[SUDOKU_ROWS][SUDOKU_COLUMNS];
+
+    // Valid sudoku grid for testing purposes
     int testBoard[SUDOKU_ROWS][SUDOKU_COLUMNS] = {
             {5,3,4,6,7,8,9,1,2}, {6,7,2,1,9,5,3,4,8}, {1,9,8,3,4,2,5,6,7},
             {8,5,9,7,6,1,4,2,3}, {4,2,6,8,5,3,7,9,1}, {7,1,3,9,2,4,8,5,6},
@@ -27,7 +30,7 @@ int main() {
 
     /* User interactive sudoku grid */
     puts("Randomly generated");
-    fillBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
+    fillBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS); // fill board provided with random values between 1-9
     printBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
     puts("");
 
@@ -40,15 +43,17 @@ int main() {
             printf("Enter row %d of your Sudoku grid.\n", row);
             row1FromUser = getInputFromUser(board, row);
         }
+        // check if the first input row into the user's sudoku grid is valid
         if (row1FromUser == 0) {
-            row = 2;
+            row = 2; // change the target row
             printf("Enter row %d of your Sudoku grid.\n", row);
             row2FromUser = getInputFromUser(board, row);
             if (row2FromUser == 0) {
                 printf("\nThank you for playing. Goodbye!");
             }
         }
-    } while (row1FromUser == 1 || row2FromUser == 1);
+    // make sure function to get input from user for row1 and row2 returns exit_success
+    } while (row1FromUser == 1 || row2FromUser == 1); // loop if either row's function call return exit_failure
 
     return 0;
 }

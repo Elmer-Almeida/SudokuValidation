@@ -17,15 +17,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
 #define RANGE 9
 #define OFFSET 1
 #define SUDOKU_ROWS 9
 #define SUDOKU_COLUMNS 9
 
-void fillBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
+void displayRowInputPrompt();
 void printBoard(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
 void checkBoard(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
 int getInputFromUser(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int);
-void displayRowInputPrompt();
+void fillBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
 
 #endif //ELMERALMEIDAASSIGN1_ALMEIELM_H
