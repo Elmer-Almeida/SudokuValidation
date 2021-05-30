@@ -25,9 +25,12 @@
 #define SUDOKU_COLUMNS 9
 
 void displayRowInputPrompt();
+void fillGridRow(int [], int);
+int checkGridRowValue(const int [], int, int);
 void printBoard(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
 void checkBoard(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
 int getInputFromUser(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int);
 void fillBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
+void printAndCheckBoard(int [SUDOKU_ROWS][SUDOKU_COLUMNS], int, int);
 
 #endif //ELMERALMEIDAASSIGN1_ALMEIELM_H

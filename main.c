@@ -13,7 +13,7 @@
 
 int main() {
     // Sudoku grid to interact with user
-    int board[SUDOKU_ROWS][SUDOKU_COLUMNS];
+    int board[SUDOKU_ROWS][SUDOKU_COLUMNS] = {0};
 
     // Valid sudoku grid for testing purposes
     int testBoard[SUDOKU_ROWS][SUDOKU_COLUMNS] = {
@@ -24,31 +24,31 @@ int main() {
 
     /* Testing Sudoku Grid */
     puts("Testing the following Sudoku Board\n");
-    printBoard(testBoard, SUDOKU_ROWS, SUDOKU_COLUMNS);
+    printAndCheckBoard(testBoard, SUDOKU_ROWS, SUDOKU_COLUMNS);
     puts("==========================");
     puts("");
 
     /* User interactive sudoku grid */
     puts("Randomly generated");
     fillBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS); // fill board provided with random values between 1-9
-    printBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
+    printAndCheckBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
     puts("");
 
     /* Get row1 from user for the sudoku grid */
     int row, row1FromUser = 1, row2FromUser;
 
     do {
-        if (row1FromUser) {
+        if (row1FromUser == EXIT_FAILURE) {
             row = 1;
             printf("Enter row %d of your Sudoku grid.\n", row);
             row1FromUser = getInputFromUser(board, row);
         }
         // check if the first input row into the user's sudoku grid is valid
-        if (row1FromUser == 0) {
+        if (row1FromUser == EXIT_SUCCESS) {
             row = 2; // change the target row
             printf("Enter row %d of your Sudoku grid.\n", row);
             row2FromUser = getInputFromUser(board, row);
-            if (row2FromUser == 0) {
+            if (row2FromUser == EXIT_SUCCESS) {
                 printf("\nThank you for playing. Goodbye!");
             }
         }

@@ -30,14 +30,62 @@ void displayRowInputPrompt() {
  * This function takes a sudoku board and populates its cells with random numbers
  */
 void fillBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
-    int i, j;
-    srand(time(NULL)); // Seed random number generator to force new random numbers
-    // loop through 2d array board[rows][columns]
+    int i, j, k, gridRow[SUDOKU_COLUMNS] = {0};
+    // loop through 2d array board[rows][columns] and input unique integers between 1-9 for each row
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
-            board[i][j] = rand() % RANGE + OFFSET; // rand() % n + m | where n is range, m is offset
+            // dividing the sudoku grid into rows 1x9
+            if (j != 0 && j % 8 == 0) {
+                // fill each row with unique integers between 1-9
+                fillGridRow(gridRow, sizeof(gridRow)/sizeof(gridRow[0]));
+                for (k = 0; k < SUDOKU_COLUMNS; k++) {
+                    board[i][k] = gridRow[k]; // transfer the gridRow values to the sudoku grid
+                    gridRow[k] = 0; // turn each value in the gridRow back to 0
+                }
+            }
         }
     }
+}
+
+/*
+ * @param gridRow[] - This array breaks down each row of the sudoku grid
+ * @param length - This is the length of the gridRow (9)
+ *
+ * This function will take each sudoku grid row and generate unique integers between 1-9
+ */
+void fillGridRow(int gridRow[], int length) {
+    int i = 0, gridRowCompleted = 0, randomValue;
+
+    while (gridRowCompleted == 0) {
+        randomValue = rand() % RANGE + OFFSET;
+        if (checkGridRowValue(gridRow, length, randomValue) == 0) {
+            gridRow[i++] = randomValue; // accept the random value and increment counter
+        }
+        // check if counter has reached the end of the current grid row
+        if (i == length){
+            gridRowCompleted = 1;
+        }
+    }
+}
+
+/*
+ * @param const gridRow[9] - each grid row of the larger sudoku grid
+ * @param length - this is the columns of the sudoku grid
+ * @param randomValue - this is the value to check if it exists in each grid row
+ *
+ * @return exit_failure (1) or exit_success (0) depending on if the randomValue exists in the grid row
+ *
+ * This function will take a grid row and a randomValue generated and validate if its unique or duplicate.
+ */
+int checkGridRowValue(const int gridRow[], int length, int randomValue) {
+    int i;
+    for (i = 0; i < length; i++) {
+        // check if random value exists in the current grid row
+        if (gridRow[i] == randomValue) {
+            return EXIT_FAILURE;
+        }
+    }
+    return EXIT_SUCCESS;
 }
 
 /*
@@ -63,7 +111,7 @@ void checkBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
                     for (y = 0; y < 3; y++) {
                         for (int z = 1; z < 10; z++) {
                             if (board[i + x][j + y] == z) {
-                                rowColumnSum += board[i + x][j + y]; // 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45
+                                rowColumnSum += board[i + x][j + y]; // Ideal: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45
                                 correctItem++;
                             }
                         }
@@ -103,8 +151,17 @@ void printBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
         puts("");
     }
     puts("---");
+}
 
-    // Important: check if the board is valid
+/*
+ * @param board - the board to print and check
+ * @param rows - the rows of the board to print and check
+ * @param columns - the columns of the board to print and check
+ *
+ * This method will invoke the printBoard and checkBoard functions in sequence
+ */
+void printAndCheckBoard(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int rows, int columns) {
+    printBoard(board, rows, columns);
     checkBoard(board, rows, columns);
 }
 
@@ -162,7 +219,7 @@ int getInputFromUser(int board[SUDOKU_ROWS][SUDOKU_COLUMNS], int row) {
         } else if (outsideRange < 1 && counter < 1) {
             for (int x = 0; x < 9; x++)
                 board[row - 1][x] = userInput[x]; // add the row to the randomly generated grid
-            printBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
+            printAndCheckBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
             return EXIT_SUCCESS;
         // an unexpected error
         } else {
