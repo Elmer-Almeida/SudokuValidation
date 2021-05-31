@@ -81,9 +81,8 @@ int checkGridRowValue(const int gridRow[], int length, int randomValue) {
     int i;
     for (i = 0; i < length; i++) {
         // check if random value exists in the current grid row
-        if (gridRow[i] == randomValue) {
+        if (gridRow[i] == randomValue)
             return EXIT_FAILURE;
-        }
     }
     return EXIT_SUCCESS;
 }

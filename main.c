@@ -23,7 +23,7 @@ int main() {
     };
 
     /* Testing Sudoku Grid */
-    puts("Testing the following Sudoku Board\n");
+    puts("Testing the following");
     printAndCheckBoard(testBoard, SUDOKU_ROWS, SUDOKU_COLUMNS);
     puts("==========================");
     puts("");
@@ -32,7 +32,6 @@ int main() {
     puts("Randomly generated");
     fillBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS); // fill board provided with random values between 1-9
     printAndCheckBoard(board, SUDOKU_ROWS, SUDOKU_COLUMNS);
-    puts("");
 
     /* Get row1 from user for the sudoku grid */
     int row, row1FromUser = 1, row2FromUser;
@@ -53,7 +52,7 @@ int main() {
             }
         }
     // make sure function to get input from user for row1 and row2 returns exit_success
-    } while (row1FromUser == 1 || row2FromUser == 1); // loop if either row's function call return exit_failure
+    } while (row1FromUser == 1 || row2FromUser == 1); // loop if either row's (1 or 2) function call return exit_failure
 
     return 0;
 }
