@@ -1,4 +1,4 @@
-# Assignment 01 - Data Structures in C
+# Assignment - Data Structures in C
 
 This assignment validates a given sudoku grid. 
 In addition, a board will randomly be generated, and a user will 
