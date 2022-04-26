@@ -13,6 +13,4 @@ The modified sudoku grid will be validated.
 * `almeielm.h` contains all the pre-processor definitions and function prototypes.
 
 ## Contact
-Personal E-Mail Address: [hello@elmeralmeida.com](mailto:hello@elmeralmeida.com)
-
-Sheridan College E-Mail Address: [almeielm@sherdancollege.ca](mailto:almeielm@sheridancollege.ca)
+Email Address: [almeielm@sherdancollege.ca](mailto:almeielm@sheridancollege.ca)
