@@ -1,4 +1,4 @@
-# Assignment - Data Structures in C
+# Sudoku Validator
 
 This assignment validates a given sudoku grid. 
 In addition, a board will randomly be generated, and a user will 
